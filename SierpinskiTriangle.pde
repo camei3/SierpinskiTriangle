@@ -1,8 +1,8 @@
-
+int iterations = 10;
 public void setup() {
   size(800,800);
   background(0);
-  sierpinski(2,width/2, height/2);
+  sierpinski(iterations,width/2, height/2);
 }
 
 void draw() {
@@ -11,20 +11,19 @@ void draw() {
 
 
 public void sierpinski(int n, float cX, float cY) {
+  float r = width/pow(2,iterations-n+1);
   stroke(255);
   noFill();
-  strokeWeight(5/n);
-  if (n <= 1) {
-    ellipse(cX,cY,500,500);
+  strokeWeight(r/5);
+  if (n <= 1) {     
     triangle(
-      cX+cos(3*PI/2)*n,cY+sin(3*PI/2)*n,
-      cX+cos(PI/6)*n,cY+sin(PI/6)*n,
-      cX+cos(5*PI/6)*n,cY+sin(5*PI/6)*n
+      cX+cos(3*PI/2)*r,cY+sin(3*PI/2)*r,
+      cX+cos(PI/6)*r,cY+sin(PI/6)*r,
+      cX+cos(5*PI/6)*r,cY+sin(5*PI/6)*r
       );
-      System.out.println(sin(PI/2));
   } else {
-    sierpinski(n-1, cX+cos(3*PI/2)*125/n,cY+sin(3*PI/2)*125/n);
-    sierpinski(n-1, cX+cos(PI/6)*125/n,cY+sin(PI/6)*125/n);
-    sierpinski(n-1, cX+cos(5*PI/6)*125/n,cY+sin(5*PI/6)*125/n);    
+    sierpinski(n-1, cX+cos(3*PI/2)*r/2,cY+sin(3*PI/2)*r/2);  
+    sierpinski(n-1, cX+cos(PI/6)*r/2,cY+sin(PI/6)*r/2);   
+    sierpinski(n-1, cX+cos(5*PI/6)*r/2,cY+sin(5*PI/6)*r/2);       
   }
 }
