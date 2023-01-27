@@ -5,8 +5,13 @@ public void setup() {
   sierpinski(iterations,width/2, height/2);
 }
 
+int anchorX = 800/2;
+int anchorY = 800/4;
+
 void draw() {
-  
+  strokeWeight(5);
+  point(anchorX,anchorY);
+  point(width/2,height/2);
 }
 
 
@@ -14,7 +19,7 @@ public void sierpinski(int n, float cX, float cY) {
   float r = width/pow(2,iterations-n+1);
   stroke(255);
   noFill();
-  strokeWeight(r/5);
+  strokeWeight(r/5); 
   if (n <= 1) {     
     triangle(
       cX+cos(3*PI/2)*r,cY+sin(3*PI/2)*r,
