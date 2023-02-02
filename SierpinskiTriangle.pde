@@ -13,19 +13,17 @@ void draw() {
   point(anchorX,anchorY);
   point(width/2,height/2);
   
-  mult = 1*pow(2,1-0);
   
-  
-  if (anchorY != height) {
-    anchorY++;
+  if (anchorY != height/2) {
+    anchorY--;
   } else {
-    anchorY = height/2;
+    anchorY = height;
   }
-  mult = pow(2,(anchorY-400.0)/400-1);
-  //System.out.println(mult + "\n" + anchorY);
-  //sierpinskii(iterations,anchorX,anchorY,mult); 
-  //stroke(255);
-  //sierpinskii(iterations-1,400,400, 1);
+  mult = 200 + 50 * pow(4,1-(height-anchorY)/(height/2.0));
+  System.out.println(mult + "\n" + anchorY);
+  System.out.println(pow(4,1-(height-anchorY)/(height/2.0)));  
+  sierpinskii(iterations,anchorX,anchorY,mult); 
+
   
   
   stroke(255,0,0);
@@ -47,6 +45,7 @@ void draw() {
 
 public void sierpinskii(int n, float cX, float cY, float scalar) {
   float r = width/pow(2,iterations-n+1)*scalar;
+  stroke(255);  
   noFill();
   strokeWeight(r/5); 
   if (n <= 1) {     
